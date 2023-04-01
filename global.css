@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px transparent;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: "#F6F1F1";
+}
+body,
+input,
+textarea,
+button {
+  font: 400 1rem Nunito, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+}
