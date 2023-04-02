@@ -8,3 +8,7 @@ export default function PageRegister() {
     </div>
   );
 }
+
+export async function getStaticProps() {
+  return { props: {} };
+}

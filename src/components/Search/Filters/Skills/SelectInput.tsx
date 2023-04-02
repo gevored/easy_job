@@ -59,7 +59,8 @@ export function SelectInput() {
       <div
         className={`${
           listSkill.size == 0 ? "invisible" : "block"
-        } flex max-h-[93px]
+        } mt-[10px] flex
+        max-h-[93px]
         flex-col
         gap-2
         overflow-y-scroll

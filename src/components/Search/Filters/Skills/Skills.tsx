@@ -2,7 +2,7 @@ import { GoChevronRight } from "react-icons/go";
 import { useState } from "react";
 import { SelectInput } from "./SelectInput";
 export function Skills() {
-  const [display, setDisplay] = useState("hidden");
+  const [display, setDisplay] = useState("block");
 
   function handleCollapse() {
     const newDisplay = display === "hidden" ? "" : "hidden";
