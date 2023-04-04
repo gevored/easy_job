@@ -1,5 +1,7 @@
 import { EditorState, RichUtils } from "draft-js";
-import { BiItalic, BiBold } from "react-icons/bi";
+import { BiItalic, BiBold, BiUnderline } from "react-icons/bi";
+import { MdOutlineFormatListBulleted } from "react-icons/md";
+import { GrOrderedList } from "react-icons/gr";
 import { ButtonStyles } from "./Button";
 
 interface ButtonTextAreaProps {
@@ -27,6 +29,32 @@ export function SetButton({
         command="BOLD"
       >
         <BiBold color="white" />
+      </ButtonStyles>
+
+      <ButtonStyles
+        editorState={editorState}
+        setEditorState={setEditorState}
+        command="UNDERLINE"
+      >
+        <BiUnderline color="white" />
+      </ButtonStyles>
+
+      <ButtonStyles
+        editorState={editorState}
+        setEditorState={setEditorState}
+        command="unordered-list-item"
+        mode="block"
+      >
+        <MdOutlineFormatListBulleted color="white" />
+      </ButtonStyles>
+
+      <ButtonStyles
+        editorState={editorState}
+        setEditorState={setEditorState}
+        command="ordered-list-item"
+        mode="block"
+      >
+        <GrOrderedList color="white" />
       </ButtonStyles>
     </div>
   );

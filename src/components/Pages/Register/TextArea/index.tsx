@@ -1,4 +1,11 @@
-import { Editor, EditorState, RichUtils } from "draft-js";
+import {
+  ContentBlock,
+  DraftBlockType,
+  Editor,
+  EditorBlock,
+  EditorState,
+  RichUtils,
+} from "draft-js";
 import { useState, useRef } from "react";
 import { SetButton } from "./SetButton";
 import "draft-js/dist/Draft.css";
@@ -19,6 +26,13 @@ export default function TextArea() {
     return "not-handled";
   }
 
+  function myBlockStyleFn(contentBlock: ContentBlock) {
+    const type = contentBlock.getType();
+    if (type === "blockquote") {
+      return "superFancyBlockquote";
+    }
+  }
+
   return (
     <div className="my-[10px] h-[calc(100%-40px)] border-2 border-red-800">
       <SetButton editorState={editorState} setEditorState={setEditorState} />
@@ -29,6 +43,7 @@ export default function TextArea() {
         onChange={setEditorState}
         handleKeyCommand={handleKeyCommand}
         placeholder="Descrição da Vaga"
+        // blockStyleFn={myBlockStyleFn}
       />
     </div>
   );
