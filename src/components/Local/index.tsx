@@ -8,7 +8,13 @@ interface City {
   label: string;
   Estado: string;
 }
-export function Local() {
+
+interface LocalProps {
+  tailwindClass?: string;
+  title?: string;
+}
+
+export function Local({ tailwindClass = "flex-col", title }: LocalProps) {
   const [stateSelected, setStateSelected] = useState("");
   const [city, setCity] = useState<City>();
   const [listCity, setListCity] = useState<City[]>();
@@ -27,8 +33,7 @@ export function Local() {
   }
 
   return (
-    <div className="flex flex-col gap-[20px] ">
-      <h1>Localização</h1>
+    <div className={tailwindClass}>
       <div className="h-[42px] w-[300px] border-[1px] border-borderInput ">
         <Select
           styles={{

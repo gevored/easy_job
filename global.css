@@ -40,3 +40,10 @@ div#__next > div {
 .align-text-left-draftjs {
   text-align: left;
 }
+
+.superFancyBlockquote {
+  color: #999;
+  font-family: "Hoefler Text", Georgia, serif;
+  font-style: italic;
+  text-align: center;
+}

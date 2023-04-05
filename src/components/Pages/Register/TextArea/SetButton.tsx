@@ -1,7 +1,12 @@
 import { EditorState, RichUtils } from "draft-js";
 import { BiItalic, BiBold, BiUnderline } from "react-icons/bi";
 import { MdOutlineFormatListBulleted } from "react-icons/md";
-import { GrOrderedList } from "react-icons/gr";
+import {
+  GrOrderedList,
+  GrTextAlignCenter,
+  GrTextAlignLeft,
+  GrTextAlignRight,
+} from "react-icons/gr";
 import { ButtonStyles } from "./Button";
 
 interface ButtonTextAreaProps {
@@ -55,6 +60,33 @@ export function SetButton({
         mode="block"
       >
         <GrOrderedList color="white" />
+      </ButtonStyles>
+
+      <ButtonStyles
+        editorState={editorState}
+        setEditorState={setEditorState}
+        command="align-left"
+        mode="block"
+      >
+        <GrTextAlignLeft color="white" />
+      </ButtonStyles>
+
+      <ButtonStyles
+        editorState={editorState}
+        setEditorState={setEditorState}
+        command="align-center"
+        mode="block"
+      >
+        <GrTextAlignCenter color="white" />
+      </ButtonStyles>
+
+      <ButtonStyles
+        editorState={editorState}
+        setEditorState={setEditorState}
+        command="align-right"
+        mode="block"
+      >
+        <GrTextAlignRight color="white" />
       </ButtonStyles>
     </div>
   );

@@ -1,13 +1,13 @@
 import { RichUtils, EditorState, DraftStyleMap } from "draft-js";
 import { useEffect, useState } from "react";
-import { getSelectedBlocksType } from "draftjs-utils";
+import { getSelectedBlocksType, Modifier, Map } from "draftjs-utils";
 
 interface ButtonTextAreaProps {
   editorState: EditorState;
   setEditorState: (editor: EditorState) => void;
   children: React.ReactNode;
   command: string;
-  mode?: "inline" | "block";
+  mode?: "inline" | "block" | "change-block-data";
 }
 
 export function ButtonStyles({
@@ -17,8 +17,6 @@ export function ButtonStyles({
   command,
   mode = "inline",
 }: ButtonTextAreaProps) {
-  const [isActived, setIsActived] = useState(false);
-
   function handleChange(editorState: EditorState, commmand: string) {
     if (mode === "inline") {
       handleChangeInlineStyle(editorState, command);
@@ -32,8 +30,6 @@ export function ButtonStyles({
       editorState,
       commmand
     );
-
-    setIsActived(!isActived);
     setEditorState(newToggleInlineStyle);
   }
 
@@ -42,26 +38,13 @@ export function ButtonStyles({
     setEditorState(newEditState);
   }
 
-  //cada modificação do textarea eu verifico se o estilo que está aplicado corresponde a esse botão
-  //caso positivo eu estilizo ele como ativo
-  useEffect(() => {
-    const style =
-      editorState.getCurrentInlineStyle().has(command) ||
-      !!(command === getSelectedBlocksType(editorState));
-
-    if (style && !isActived) {
-      setIsActived(!isActived);
-    } else {
-      if (!style && isActived) {
-        setIsActived(!isActived);
-      }
-    }
-  }, [editorState]);
-
+  const isActivated =
+    editorState.getCurrentInlineStyle().has(command) ||
+    !!(command === getSelectedBlocksType(editorState));
   return (
     <button
-      className={`rounded-sm  p-[2px] hover:bg-gray-500 ${
-        isActived ? "bg-gray-500" : "bg-gray-400"
+      className={`rounded-sm  p-[5px] hover:bg-gray-500 ${
+        isActivated ? "bg-gray-500" : "bg-gray-400"
       }`}
       onClick={() => handleChange(editorState, command)}
       onMouseDown={(event: React.MouseEvent<HTMLButtonElement>) =>
